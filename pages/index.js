@@ -1,6 +1,20 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
+import localFont from '@next/font/local'
+
+const roboto = localFont({
+  src: [
+    {
+      path: 'poppins-font/Poppins-Medium.ttf',
+      weight: '400',
+      style: 'normal',
+    },
+  ],
+  variable: '--my-font',
+})
+
+
 
 export default function Home() {
   return (
