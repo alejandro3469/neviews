@@ -1,16 +1,14 @@
 import React from "react";
 import Image from "next/image";
+import { BiMenuAltLeft } from "react-icons/bi";
+import { IconContext } from "react-icons";
 
 export default function MenuButton() {
   return (
-    <Image
-      src={"/icons/menu_white_18dp.svg"}
-      alt="Menu icon"
-      width={18}
-      height={18}
-      className="pointer"
-      // blurDataURL="data:..." automatically provided
-      // placeholder="blur" // Optional blur-up while loading
-    />
+    <IconContext.Provider value={{ color: "black", className: "" }}>
+      <div className="pointer">
+        <BiMenuAltLeft />
+      </div>
+    </IconContext.Provider>
   );
 }

@@ -5,7 +5,7 @@ export default function SearchBar() {
   return (
     <div className="searchbar-container">
           <Image
-            src={"/icons/search_white_18dp.svg"}
+            src={"/icons/search_black_18dp.svg"}
             alt="Search icon"
             width={18}
             height={18}

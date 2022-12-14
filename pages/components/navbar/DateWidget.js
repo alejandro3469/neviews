@@ -75,7 +75,7 @@ export default function DateWidget() {
   };
   return (
     <div className="date">
-      <div className="day">{day()}</div>
+      {<div className="day">{day()}</div>}
       <div>{`${month()} ${date.getDate()}, ${date.getFullYear()}`}</div>
     </div>
   );

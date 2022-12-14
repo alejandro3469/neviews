@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Image from "next/image";
+import Article from "./article";
 import Layout from "./components/Layout/Layout";
 import RandomText from "./components/RandomText";
 
@@ -12,6 +13,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
+      <Article />
         <RandomText />
       </Layout>
     </div>

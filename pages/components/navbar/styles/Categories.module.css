@@ -1,0 +1,27 @@
+.categories {
+  list-style: none;
+  display: flex;
+  font-size: 12px;
+  font-weight: 300;
+  padding: 0;
+  border-top: 1px solid #bdbdbd8a;
+  border-bottom: 1px solid #bdbdbd8a;
+}
+.categories li {
+  cursor: pointer;
+  padding: 8px 0;
+  width: 100%;
+  text-align: center;
+  /*border-bottom: 1px solid #bdbdbd;*/
+  transition: background-color 0.2s;
+  text-align: center;
+}
+.categories li:hover {
+  background-color: #fafafa;
+}
+.selected_category {
+  /*border-bottom: 1px solid #ffffff;*/
+}
+.selected_category:hover {
+  background-color: inherit;
+}

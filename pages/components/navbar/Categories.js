@@ -1,21 +1,29 @@
 import React from "react";
+import styles from "./styles/Categories.module.css";
+import { useState, useEffect } from "react";
 
 export default function Categories() {
+  const [categories, setCategories] = useState(null);
+
+  const fetcher = async () => {
+    const res = await fetch("/api/categories");
+
+    const data = await res.json();
+
+    setCategories(data);
+  };
+
+  useEffect(() => {
+    fetcher();
+  }, []);
+
+  useEffect(() => {
+    console.log(categories);
+  }, [categories]);
+
   return (
-    <ul className="nav-section categories">
-      <li className="category selected-category">Books</li>
-      <li className="category">Science</li>
-      <li className="category">Business</li>
-      <li className="category">Tech</li>
-      <li className="category">Health</li>
-      <li className="category">Sports</li>
-      <li className="category">World</li>
-      <li className="category">Politics</li>
-      <li className="category">Food</li>
-      <li className="category">Travel</li>
-      <li className="category">Art</li>
-      <li className="category">Style</li>
-      <li className="category">Food</li>
+    <ul className={styles.categories}>
+      {categories && categories.map((category, _index) => <li key={_index}>{category}</li>)}
     </ul>
   );
 }
