@@ -1,34 +1,30 @@
 import React from "react";
 
-// posts will be populated at build time by getStaticProps()
-function Article({ posts }) {
-  
-  return (
-    <ul>
-      {posts && posts.map((post, _index) => <li key={_index}>{post.title}</li>)}
+async function getData() {
+  const res = await fetch("http://localhost:3000/api/articles");
+  // The return value is *not* serialized
+  // You can return Date, Map, Set, etc.
 
-      {!posts && "No "}
-    </ul>
-  );
+  // Recommendation: handle errors
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error("Failed to fetch data");
+  }
+
+  return res.json();
 }
 
-// This function gets called at build time on server-side.
-// It won't be called on client-side, so you can even do
-// direct database queries.
-export async function getStaticProps() {
-  // Call an external API endpoint to get posts.
-  // You can use any data fetching library
-  const res = await fetch("http://localhost:3000/api/articles");
-  const posts = await res.json();
-  console.log(posts);
+// posts will be populated at build time by getStaticProps()
+async function Article({ posts }) {
+  const data = await getData();
 
-  // By returning { props: { posts } }, the Blog component
-  // will receive `posts` as a prop at build time
-  return {
-    props: {
-      posts,
-    },
-  };
+  return (
+    <ul>
+      {data && data.map((item, _index) => <li key={_index}>{item.title}</li>)}
+
+      {!data && "No "}
+    </ul>
+  );
 }
 
 export default Article;
