@@ -2,7 +2,7 @@ import React from "react";
 
 // posts will be populated at build time by getStaticProps()
 function Article({ posts }) {
-  console.log(posts);
+  
   return (
     <ul>
       {posts && posts.map((post, _index) => <li key={_index}>{post.title}</li>)}
